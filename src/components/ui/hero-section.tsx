@@ -1,12 +1,20 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ArrowRight, Calendar } from "lucide-react";
+import heroImage from "@/assets/hero-digital-transformation.jpg";
 
 const HeroSection = () => {
   return (
     <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
       {/* Background Gradient */}
       <div className="absolute inset-0 gradient-hero"></div>
+      <img
+        src={heroImage}
+        alt="Transformation digitale chez Rodanol"
+        className="absolute inset-0 w-full h-full object-cover opacity-30"
+        loading="lazy"
+        decoding="async"
+      />
       
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">

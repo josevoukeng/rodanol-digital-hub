@@ -186,10 +186,13 @@ const Contact = () => {
                   </div>
                   
                   <Button 
+                    asChild
                     className="w-full bg-white text-primary hover:bg-blue-50"
                     size="lg"
                   >
-                    Réserver un créneau
+                    <a href="https://calendly.com/rodanol/20min" target="_blank" rel="noreferrer">
+                      Réserver un créneau
+                    </a>
                   </Button>
                 </CardContent>
               </Card>

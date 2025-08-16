@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { BarChart3, Zap, Users, GraduationCap, Check, ArrowRight } from "lucide-react";
+import servicesHero from "@/assets/services-hero.jpg";
 
 const Services = () => {
   const services = [
@@ -95,6 +96,13 @@ const Services = () => {
       
       {/* Hero Services */}
       <section className="relative py-24 gradient-hero text-white">
+        <img
+          src={servicesHero}
+          alt="Services digitaux Rodanol"
+          className="absolute inset-0 w-full h-full object-cover opacity-30"
+          loading="lazy"
+          decoding="async"
+        />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
             Nos Services

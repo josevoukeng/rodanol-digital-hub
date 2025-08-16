@@ -4,79 +4,23 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Calendar, Clock, ArrowRight, BarChart3, Zap, TrendingUp } from "lucide-react";
+import { articles } from "@/data/articles";
 
 const Blog = () => {
-  const articles = [
-    {
-      id: 1,
-      title: "Les 5 étapes pour réussir sa transformation digitale",
-      excerpt: "Découvrez notre méthodologie éprouvée pour accompagner votre entreprise dans sa transformation digitale.",
-      content: "La transformation digitale n'est plus une option mais une nécessité pour rester compétitif...",
-      date: "15 Mars 2024",
-      readTime: "5 min",
-      category: "Transformation Digitale",
-      icon: TrendingUp,
-      featured: true
-    },
-    {
-      id: 2,
-      title: "Power BI : Comment créer des tableaux de bord efficaces",
-      excerpt: "Guide pratique pour concevoir des dashboards Power BI qui transforment vos données en insights.",
-      content: "Un bon tableau de bord Power BI doit répondre aux questions métier essentielles...",
-      date: "10 Mars 2024",
-      readTime: "7 min",
-      category: "Business Intelligence",
-      icon: BarChart3,
-      featured: false
-    },
-    {
-      id: 3,
-      title: "Automatisation : 10 processus à digitaliser en priorité",
-      excerpt: "Identifiez les processus qui vous feront gagner le plus de temps grâce à l'automatisation.",
-      content: "L'automatisation des processus peut transformer radicalement l'efficacité de votre entreprise...",
-      date: "5 Mars 2024",
-      readTime: "6 min",
-      category: "Automatisation",
-      icon: Zap,
-      featured: false
-    },
-    {
-      id: 4,
-      title: "ROI de la Business Intelligence : Comment le mesurer ?",
-      excerpt: "Méthodes et indicateurs clés pour calculer le retour sur investissement de vos projets BI.",
-      content: "Mesurer le ROI d'un projet Business Intelligence nécessite une approche structurée...",
-      date: "1 Mars 2024",
-      readTime: "8 min",
-      category: "Business Intelligence",
-      icon: BarChart3,
-      featured: false
-    },
-    {
-      id: 5,
-      title: "Power Automate vs développement custom : que choisir ?",
-      excerpt: "Analyse comparative pour vous aider à choisir la meilleure solution d'automatisation.",
-      content: "Le choix entre Power Automate et un développement sur mesure dépend de plusieurs facteurs...",
-      date: "25 Février 2024",
-      readTime: "6 min",
-      category: "Automatisation",
-      icon: Zap,
-      featured: false
-    },
-    {
-      id: 6,
-      title: "Formation équipes : clés de succès d'un projet digital",
-      excerpt: "Pourquoi la formation est cruciale et comment bien l'organiser pour maximiser l'adoption.",
-      content: "Le succès d'un projet de transformation digitale repose en grande partie sur l'adoption...",
-      date: "20 Février 2024",
-      readTime: "5 min",
-      category: "Formation",
-      icon: TrendingUp,
-      featured: false
+  const getIcon = (category: string) => {
+    switch (category) {
+      case "Business Intelligence":
+        return BarChart3;
+      case "Automatisation":
+        return Zap;
+      default:
+        return TrendingUp;
     }
-  ];
+  };
 
-  const featuredArticle = articles.find(article => article.featured);
-  const regularArticles = articles.filter(article => !article.featured);
+  const featuredArticle = articles.find((article) => article.featured);
+  const regularArticles = articles.filter((article) => !article.featured);
+  const FeaturedIcon = featuredArticle ? getIcon(featuredArticle.category) : null;
 
   return (
     <div className="min-h-screen">
@@ -108,7 +52,7 @@ const Blog = () => {
               <div className="grid lg:grid-cols-2">
                 <div className="gradient-primary text-white p-8 lg:p-12 flex flex-col justify-center">
                   <div className="flex items-center gap-2 mb-4">
-                    <featuredArticle.icon className="h-6 w-6" />
+                    {FeaturedIcon && <FeaturedIcon className="h-6 w-6" />}
                     <span className="text-blue-200">{featuredArticle.category}</span>
                   </div>
                   <h2 className="text-3xl lg:text-4xl font-bold mb-4">
@@ -127,9 +71,11 @@ const Blog = () => {
                       {featuredArticle.readTime}
                     </div>
                   </div>
-                  <Button className="bg-white text-primary hover:bg-blue-50 w-fit">
-                    Lire l'article complet
-                    <ArrowRight className="h-4 w-4 ml-2" />
+                  <Button asChild className="bg-white text-primary hover:bg-blue-50 w-fit">
+                    <Link to={`/blog/${featuredArticle.id}`} className="inline-flex items-center">
+                      Lire l'article complet
+                      <ArrowRight className="h-4 w-4 ml-2" />
+                    </Link>
                   </Button>
                 </div>
                 <CardContent className="p-8 lg:p-12">
@@ -158,7 +104,7 @@ const Blog = () => {
               <Card key={article.id} className="shadow-card hover:shadow-elegant transition-smooth border-0 h-full">
                 <CardHeader>
                   <div className="flex items-center gap-2 mb-2">
-                    <article.icon className="h-5 w-5 text-primary" />
+                    {(() => { const Icon = getIcon(article.category); return <Icon className="h-5 w-5 text-primary" />; })()}
                     <span className="text-sm text-primary font-medium">{article.category}</span>
                   </div>
                   <CardTitle className="text-xl leading-tight">
@@ -179,9 +125,11 @@ const Blog = () => {
                       {article.readTime}
                     </div>
                   </div>
-                  <Button variant="outline" className="w-full">
-                    Lire l'article
-                    <ArrowRight className="h-4 w-4 ml-2" />
+                  <Button asChild variant="outline" className="w-full">
+                    <Link to={`/blog/${article.id}`} className="inline-flex items-center justify-center">
+                      Lire l'article
+                      <ArrowRight className="h-4 w-4 ml-2" />
+                    </Link>
                   </Button>
                 </CardContent>
               </Card>
