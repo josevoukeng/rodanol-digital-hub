@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin } from "lucide-react";
+import CalendlyWidget from "@/components/ui/calendly-widget";
 
 const Footer = () => {
   return (
@@ -63,6 +64,11 @@ const Footer = () => {
               <div>Formation</div>
             </div>
           </div>
+        </div>
+
+        {/* Calendly Button */}
+        <div className="mt-12 text-center">
+          <CalendlyWidget />
         </div>
 
         <div className="border-t border-secondary-foreground/20 mt-12 pt-8 text-center">

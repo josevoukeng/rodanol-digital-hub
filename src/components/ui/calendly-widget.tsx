@@ -1,17 +1,13 @@
 
 import { useEffect } from 'react';
+import { Button } from "@/components/ui/button";
+import { Calendar } from "lucide-react";
 
 // Extend window type for Calendly
 declare global {
   interface Window {
     Calendly?: {
-      initBadgeWidget: (options: {
-        url: string;
-        text: string;
-        color: string;
-        textColor: string;
-        branding: boolean;
-      }) => void;
+      initPopupWidget: (options: { url: string }) => void;
     };
   }
 }
@@ -30,19 +26,6 @@ const CalendlyWidget = () => {
     script.async = true;
     document.body.appendChild(script);
 
-    // Initialize badge widget when script loads
-    script.onload = () => {
-      if (window.Calendly) {
-        window.Calendly.initBadgeWidget({
-          url: 'https://calendly.com/josevoukeng25/20min',
-          text: 'Schedule time with me',
-          color: '#0069ff',
-          textColor: '#ffffff',
-          branding: true
-        });
-      }
-    };
-
     return () => {
       // Cleanup
       if (document.head.contains(link)) {
@@ -54,7 +37,24 @@ const CalendlyWidget = () => {
     };
   }, []);
 
-  return null; // Badge widget is injected by Calendly
+  const openCalendly = () => {
+    if (window.Calendly) {
+      window.Calendly.initPopupWidget({
+        url: 'https://calendly.com/josevoukeng25/20min'
+      });
+    }
+  };
+
+  return (
+    <Button 
+      onClick={openCalendly}
+      size="lg"
+      className="w-full sm:w-auto"
+    >
+      <Calendar className="h-5 w-5 mr-2" />
+      Réservez votre consultation gratuite
+    </Button>
+  );
 };
 
 export default CalendlyWidget;

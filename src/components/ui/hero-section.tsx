@@ -37,7 +37,7 @@ const HeroSection = () => {
               asChild 
               variant="outline" 
               size="lg"
-              className="border-white text-white hover:bg-white/10 transition-bounce text-lg px-8 py-6 h-auto"
+              className="border-white text-white bg-white/10 hover:bg-white hover:text-primary transition-bounce text-lg px-8 py-6 h-auto"
             >
               <Link to="/contact" className="flex items-center gap-2">
                 <Calendar className="h-5 w-5" />
