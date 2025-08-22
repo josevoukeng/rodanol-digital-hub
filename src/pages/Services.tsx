@@ -1,3 +1,4 @@
+
 import Navigation from "@/components/ui/navigation";
 import Footer from "@/components/ui/footer";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -12,6 +13,7 @@ const Services = () => {
       title: "Business Intelligence",
       description: "Transformez vos données en insights actionnables avec nos solutions de BI avancées.",
       longDescription: "Notre expertise en Business Intelligence vous permet de prendre des décisions éclairées grâce à des données fiables et des analyses approfondies.",
+      image: "/src/assets/service-bi.jpg",
       features: [
         "Tableaux de bord Power BI interactifs",
         "Modélisation de données avancée", 
@@ -32,6 +34,7 @@ const Services = () => {
       title: "Automatisation des processus",
       description: "Optimisez vos opérations avec des workflows intelligents et des processus automatisés.",
       longDescription: "Gagnez du temps et réduisez les erreurs en automatisant vos processus répétitifs avec Power Automate et des solutions sur mesure.",
+      image: "/src/assets/service-automation.jpg",
       features: [
         "Workflows Power Automate",
         "Intégrations API personnalisées",
@@ -52,6 +55,7 @@ const Services = () => {
       title: "Conseil & Accompagnement",
       description: "Bénéficiez de notre expertise pour définir et mettre en œuvre votre stratégie digitale.",
       longDescription: "Un accompagnement personnalisé pour réussir votre transformation digitale, de l'audit initial à la mise en production.",
+      image: "/src/assets/service-consulting.jpg",
       features: [
         "Audit digital complet",
         "Définition de stratégie",
@@ -72,6 +76,7 @@ const Services = () => {
       title: "Formation",
       description: "Formez vos équipes aux outils digitaux et à Power Platform pour une autonomie totale.",
       longDescription: "Des formations sur mesure pour que vos équipes maîtrisent parfaitement les outils déployés.",
+      image: "/src/assets/service-formation.jpg",
       features: [
         "Formation Power BI",
         "Formation Power Apps",
@@ -160,22 +165,21 @@ const Services = () => {
                   </div>
 
                   <div className={isEven ? 'lg:order-2' : 'lg:order-1'}>
-                    <Card className="shadow-elegant border-0 bg-card">
-                      <CardHeader>
-                        <CardTitle className="text-2xl">{service.title}</CardTitle>
-                        <CardDescription className="text-lg">
-                          {service.description}
-                        </CardDescription>
-                      </CardHeader>
-                      <CardContent>
-                        <div className="gradient-primary rounded-lg p-6 text-white">
-                          <h4 className="font-semibold mb-4">Pourquoi ce service ?</h4>
-                          <p className="text-blue-100 leading-relaxed">
-                            {service.longDescription}
-                          </p>
-                        </div>
-                      </CardContent>
-                    </Card>
+                    <div className="relative">
+                      <img 
+                        src={service.image} 
+                        alt={service.title}
+                        className="w-full h-80 object-cover rounded-2xl shadow-elegant"
+                      />
+                      <Card className="absolute -bottom-8 -right-8 max-w-xs shadow-elegant border-0 bg-card">
+                        <CardHeader>
+                          <CardTitle className="text-xl">{service.title}</CardTitle>
+                          <CardDescription>
+                            {service.description}
+                          </CardDescription>
+                        </CardHeader>
+                      </Card>
+                    </div>
                   </div>
                 </div>
               );

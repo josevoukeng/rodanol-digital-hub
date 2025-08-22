@@ -1,3 +1,4 @@
+
 import Navigation from "@/components/ui/navigation";
 import Footer from "@/components/ui/footer";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -16,6 +17,7 @@ const Blog = () => {
       readTime: "5 min",
       category: "Transformation Digitale",
       icon: TrendingUp,
+      image: "/src/assets/blog-1.jpg",
       featured: true
     },
     {
@@ -27,6 +29,7 @@ const Blog = () => {
       readTime: "7 min",
       category: "Business Intelligence",
       icon: BarChart3,
+      image: "/src/assets/blog-2.jpg",
       featured: false
     },
     {
@@ -38,39 +41,7 @@ const Blog = () => {
       readTime: "6 min",
       category: "Automatisation",
       icon: Zap,
-      featured: false
-    },
-    {
-      id: 4,
-      title: "ROI de la Business Intelligence : Comment le mesurer ?",
-      excerpt: "Méthodes et indicateurs clés pour calculer le retour sur investissement de vos projets BI.",
-      content: "Mesurer le ROI d'un projet Business Intelligence nécessite une approche structurée...",
-      date: "1 Mars 2024",
-      readTime: "8 min",
-      category: "Business Intelligence",
-      icon: BarChart3,
-      featured: false
-    },
-    {
-      id: 5,
-      title: "Power Automate vs développement custom : que choisir ?",
-      excerpt: "Analyse comparative pour vous aider à choisir la meilleure solution d'automatisation.",
-      content: "Le choix entre Power Automate et un développement sur mesure dépend de plusieurs facteurs...",
-      date: "25 Février 2024",
-      readTime: "6 min",
-      category: "Automatisation",
-      icon: Zap,
-      featured: false
-    },
-    {
-      id: 6,
-      title: "Formation équipes : clés de succès d'un projet digital",
-      excerpt: "Pourquoi la formation est cruciale et comment bien l'organiser pour maximiser l'adoption.",
-      content: "Le succès d'un projet de transformation digitale repose en grande partie sur l'adoption...",
-      date: "20 Février 2024",
-      readTime: "5 min",
-      category: "Formation",
-      icon: TrendingUp,
+      image: "/src/assets/blog-3.jpg",
       featured: false
     }
   ];
@@ -106,39 +77,43 @@ const Blog = () => {
             
             <Card className="shadow-elegant border-0 overflow-hidden">
               <div className="grid lg:grid-cols-2">
-                <div className="gradient-primary text-white p-8 lg:p-12 flex flex-col justify-center">
-                  <div className="flex items-center gap-2 mb-4">
-                    <featuredArticle.icon className="h-6 w-6" />
-                    <span className="text-blue-200">{featuredArticle.category}</span>
+                <div className="relative">
+                  <img 
+                    src={featuredArticle.image} 
+                    alt={featuredArticle.title}
+                    className="w-full h-full object-cover min-h-[400px]"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                  <div className="absolute bottom-6 left-6 text-white">
+                    <div className="flex items-center gap-2 mb-2">
+                      <featuredArticle.icon className="h-5 w-5" />
+                      <span className="text-sm">{featuredArticle.category}</span>
+                    </div>
+                    <div className="flex items-center gap-4 text-sm">
+                      <div className="flex items-center gap-1">
+                        <Calendar className="h-4 w-4" />
+                        {featuredArticle.date}
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <Clock className="h-4 w-4" />
+                        {featuredArticle.readTime}
+                      </div>
+                    </div>
                   </div>
+                </div>
+                <CardContent className="p-8 lg:p-12 flex flex-col justify-center">
                   <h2 className="text-3xl lg:text-4xl font-bold mb-4">
                     {featuredArticle.title}
                   </h2>
-                  <p className="text-lg text-blue-100 mb-6 leading-relaxed">
+                  <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
                     {featuredArticle.excerpt}
                   </p>
-                  <div className="flex items-center gap-4 text-blue-200 text-sm mb-6">
-                    <div className="flex items-center gap-1">
-                      <Calendar className="h-4 w-4" />
-                      {featuredArticle.date}
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <Clock className="h-4 w-4" />
-                      {featuredArticle.readTime}
-                    </div>
-                  </div>
-                  <Button className="bg-white text-primary hover:bg-blue-50 w-fit">
-                    Lire l'article complet
-                    <ArrowRight className="h-4 w-4 ml-2" />
+                  <Button className="gradient-primary w-fit" asChild>
+                    <Link to={`/blog/${featuredArticle.id}`}>
+                      Lire l'article complet
+                      <ArrowRight className="h-4 w-4 ml-2" />
+                    </Link>
                   </Button>
-                </div>
-                <CardContent className="p-8 lg:p-12">
-                  <div className="h-full flex flex-col justify-center">
-                    <h3 className="text-xl font-semibold mb-4">Aperçu de l'article</h3>
-                    <p className="text-muted-foreground leading-relaxed">
-                      {featuredArticle.content}
-                    </p>
-                  </div>
                 </CardContent>
               </div>
             </Card>
@@ -155,7 +130,14 @@ const Blog = () => {
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {regularArticles.map((article) => (
-              <Card key={article.id} className="shadow-card hover:shadow-elegant transition-smooth border-0 h-full">
+              <Card key={article.id} className="shadow-card hover:shadow-elegant transition-smooth border-0 h-full overflow-hidden">
+                <div className="aspect-video relative overflow-hidden">
+                  <img 
+                    src={article.image} 
+                    alt={article.title}
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
                 <CardHeader>
                   <div className="flex items-center gap-2 mb-2">
                     <article.icon className="h-5 w-5 text-primary" />
@@ -179,9 +161,11 @@ const Blog = () => {
                       {article.readTime}
                     </div>
                   </div>
-                  <Button variant="outline" className="w-full">
-                    Lire l'article
-                    <ArrowRight className="h-4 w-4 ml-2" />
+                  <Button variant="outline" className="w-full" asChild>
+                    <Link to={`/blog/${article.id}`}>
+                      Lire l'article
+                      <ArrowRight className="h-4 w-4 ml-2" />
+                    </Link>
                   </Button>
                 </CardContent>
               </Card>

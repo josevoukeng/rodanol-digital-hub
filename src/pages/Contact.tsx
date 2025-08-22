@@ -7,6 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Mail, Phone, MapPin, Calendar, Clock, Users } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import CalendlyWidget from "@/components/ui/calendly-widget";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -158,42 +159,6 @@ const Contact = () => {
                 </CardContent>
               </Card>
 
-              {/* Réservation RDV */}
-              <Card className="shadow-card border-0 gradient-primary text-white">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <Calendar className="h-5 w-5" />
-                    Réservez votre consultation gratuite
-                  </CardTitle>
-                  <CardDescription className="text-blue-100">
-                    20 minutes pour analyser vos besoins
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="space-y-3">
-                    <div className="flex items-center gap-3">
-                      <Clock className="h-5 w-5 text-blue-200" />
-                      <span>Durée : 20 minutes</span>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <Users className="h-5 w-5 text-blue-200" />
-                      <span>Consultation personnalisée</span>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <Calendar className="h-5 w-5 text-blue-200" />
-                      <span>Disponible sous 48h</span>
-                    </div>
-                  </div>
-                  
-                  <Button 
-                    className="w-full bg-white text-primary hover:bg-blue-50"
-                    size="lg"
-                  >
-                    Réserver un créneau
-                  </Button>
-                </CardContent>
-              </Card>
-
               {/* Processus */}
               <Card className="shadow-card border-0">
                 <CardHeader>
@@ -233,6 +198,26 @@ const Contact = () => {
               </Card>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Section Calendly */}
+      <section className="py-24 bg-muted/50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-foreground mb-6">
+              Réservez votre consultation gratuite
+            </h2>
+            <p className="text-xl text-muted-foreground">
+              20 minutes pour analyser vos besoins et définir ensemble la meilleure stratégie
+            </p>
+          </div>
+          
+          <Card className="shadow-elegant border-0">
+            <CardContent className="p-0">
+              <CalendlyWidget />
+            </CardContent>
+          </Card>
         </div>
       </section>
 
