@@ -18,38 +18,40 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 222 84% 4.9%;
 
-    /* Bleu nuit principal */
-    --primary: 215 25% 27%;
+    /* Bleu Rodanol gradient - du cyan au bleu foncé */
+    --primary: 195 100% 50%; /* Bleu cyan du logo */
     --primary-foreground: 0 0% 98%;
+    --primary-light: 195 100% 60%; /* Version plus claire */
+    --primary-dark: 215 100% 25%; /* Bleu foncé du logo */
     
-    /* Noir professionnel */
-    --secondary: 222 47% 11%;
+    /* Bleu secondaire */
+    --secondary: 215 100% 35%;
     --secondary-foreground: 0 0% 98%;
 
     /* Tons neutres */
-    --muted: 215 20% 96%;
-    --muted-foreground: 215 10% 46%;
+    --muted: 195 20% 96%;
+    --muted-foreground: 195 15% 46%;
 
-    --accent: 215 25% 27%;
+    --accent: 195 100% 50%;
     --accent-foreground: 0 0% 98%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 215 20% 91%;
-    --input: 215 20% 96%;
-    --ring: 215 25% 27%;
+    --border: 195 20% 91%;
+    --input: 195 20% 96%;
+    --ring: 195 100% 50%;
 
     --radius: 0.75rem;
 
-    /* Gradients corporatifs */
-    --gradient-primary: linear-gradient(135deg, hsl(215 25% 27%), hsl(222 47% 11%));
-    --gradient-subtle: linear-gradient(180deg, hsl(0 0% 99%), hsl(215 20% 98%));
-    --gradient-hero: linear-gradient(135deg, hsl(215 25% 27%) 0%, hsl(222 47% 11%) 50%, hsl(215 25% 23%) 100%);
+    /* Gradients Rodanol - inspirés du logo */
+    --gradient-primary: linear-gradient(135deg, hsl(195 100% 50%), hsl(215 100% 25%));
+    --gradient-subtle: linear-gradient(180deg, hsl(0 0% 99%), hsl(195 20% 98%));
+    --gradient-hero: linear-gradient(135deg, hsl(195 100% 60%) 0%, hsl(195 100% 45%) 30%, hsl(215 100% 30%) 100%);
     
-    /* Shadows élégantes */
-    --shadow-elegant: 0 20px 25px -5px hsl(215 25% 27% / 0.1), 0 10px 10px -5px hsl(215 25% 27% / 0.04);
-    --shadow-card: 0 4px 6px -1px hsl(215 25% 27% / 0.1), 0 2px 4px -1px hsl(215 25% 27% / 0.06);
+    /* Shadows élégantes avec bleu Rodanol */
+    --shadow-elegant: 0 20px 25px -5px hsl(195 100% 50% / 0.15), 0 10px 10px -5px hsl(195 100% 50% / 0.06);
+    --shadow-card: 0 4px 6px -1px hsl(195 100% 50% / 0.1), 0 2px 4px -1px hsl(195 100% 50% / 0.06);
     
     /* Animations */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
